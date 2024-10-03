@@ -1,33 +1,27 @@
 ---
 // astro
 import { getCollection, getEntry, render } from 'astro:content'
-// import { getCollection } from 'astro:content'
 import type { GetStaticPaths } from "astro"
 
 // self
-import Hello from "!solid/hello.tsx"
 import Layout from "!layouts/layout.astro"
 import { title } from "!root/consts.js"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection('stack')
-  // console.log("POSTS", posts)
-  return posts.map((post: any, i: number) => {
-    // console.log(i, "POST", post)
-    return {
-      params: { slug: post.id },
-      props: post,
-    }
-  })
+  return posts.map((post: any) => ({
+    params: { slug: post.id },
+    props: post,
+  }))
 }
 
-/*
-const post = await getEntry('stack', 'hop')
-const { Content, headings } = await render(post)
-console.log(JSON.stringify(headings, null, 2))
-  <Content />
-*/
+// @ts-expect-error
+const post: any = await getEntry('stack', Astro.props.id)
+const { Content } = await render(post)
 ---
 <Layout title={title}>
-	<Hello name="Bob" />
+  <div class="prose">
+    <h2>{post.data.title}</h2>
+    <Content />
+  </div>
 </Layout>

@@ -1,28 +1,23 @@
 ---
 // astro
-import { getCollection, getEntry, render } from 'astro:content'
+import { getCollection } from 'astro:content'
 
 // self
-import Hello from "!solid/hello.tsx"
 import Layout from "!layouts/layout.astro"
 import { title } from "!root/consts.js"
 
 const allBlogPosts = await getCollection('stack')
-console.log("allBlogPosts", allBlogPosts)
 
-// const graceHopperProfile = await getEntry('stack', 'hop')
-
-// console.log(graceHopperProfile)
-
-// const { Content } = await render(graceHopperProfile)
-// console.log(JSON.stringify(headings, null, 2))
-// <Content />
+function byDate(a: any, b: any) {
+	if (a.data.pubDate > b.data.pubDate) return 1
+	if (a.data.pubDate < b.data.pubDate) return -1
+	return 0
+}
 ---
 <Layout title={title}>
-	<Hello name="Bob" />
-	<ol>
-		{allBlogPosts.map((post: any, i: number) => {
-			return <li>{i} {post.id} {post.data.title}</li>
+	<ol class="list-decimal mx-6 my-4">
+		{allBlogPosts.sort(byDate).map((post: any) => {
+			return <li><a href={post.id}>{post.data.title}</a></li>
 		})}
 	</ol>
 </Layout>
