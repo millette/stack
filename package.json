@@ -1,0 +1,38 @@
+{
+  "name": "stack",
+  "type": "module",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20.17.0",
+    "npm": ">=10.8.3",
+    "pnpm": ">=9.12.0"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "tsc --noEmit && astro check && astro build",
+    "check": "astro check",
+    "check:tsc": "tsc --noEmit",
+    "check:all": "tsc --noEmit && astro check",
+    "preview": "astro preview",
+    "go": "tsc --noEmit && astro check && astro build && astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/solid-js": "^4.4.2",
+    "@astrojs/tailwind": "^5.1.1",
+    "astro": "^4.15.11",
+    "astro-devtool-breakpoints": "^0.3.0",
+    "solid-js": "^1.9.1",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^22.7.4",
+    "daisyui": "^4.12.11",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2"
+  }
+}
