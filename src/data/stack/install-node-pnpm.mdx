@@ -1,0 +1,18 @@
+---
+title: "Install node & pnpm"
+description: "Hop la description"
+pubDate: "2024-10-03 16:09"
+---
+To install the latest pnpm and the node LTS run the following in your terminal:
+
+```sh
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+bash # or restart the terminal to load new $PATH
+pnpm --version # should output something like 9.12.0
+node --version # should output something like v20.17.0
+which pnpm # should output something like ~/.local/share/pnpm/pnpm
+which node # should output something like ~/.local/share/pnpm/node
+```
+
+If `which` outputs something other than `~/.local/share/pnpm/...` it's probably because
+you already have node or pnpm installed and your `$PATH` is finding those first.

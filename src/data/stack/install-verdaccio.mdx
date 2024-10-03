@@ -1,0 +1,45 @@
+---
+title: "Install verdaccio"
+description: "Hop la description"
+pubDate: "2024-10-03 16:39"
+---
+
+Verdaccio is a lightweight private npm proxy registry.
+It uses the same client protocol as npm, but is fully
+compliant with the npm registry API.
+
+```sh
+pnpm install --global verdaccio
+```
+
+You can use the short version:
+
+```sh
+pnpm i -g verdaccio
+```
+
+You can configure npm/pnpm to use verdaccio as a registry:
+
+```
+registry-supports-time-field=true
+registry=http://localhost:4873/
+```
+
+You can also configure it to run automatically with pm2.
+
+Create the file `~/ecosystem.config.js`:
+
+```js
+module.exports = {
+  apps : [
+    {
+      env: {
+        NODE_ENV: 'production',
+      },
+      script: '~/.local/share/pnpm/global/5/.pnpm/verdaccio@6.0.0_encoding@0.1.13_typanion@3.14.0/node_modules/verdaccio/bin/verdaccio',
+      watch: '~/.local/share/pnpm/global/5/.pnpm/verdaccio@6.0.0_encoding@0.1.13_typanion@3.14.0/node_modules/verdaccio/'
+    }
+  ]
+}
+
+```

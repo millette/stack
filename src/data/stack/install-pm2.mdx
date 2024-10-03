@@ -1,0 +1,25 @@
+---
+title: "Install PM2"
+description: "P(rocess) M(anager) 2"
+pubDate: "2024-10-03 16:37"
+---
+
+PM2 is a process manager for Node.js applications with a built-in load balancer.
+It allows you to keep applications alive forever, to reload them without downtime
+and to facilitate common system admin tasks.
+
+```sh
+pnpm install --global pm2
+```
+
+You can use the short version:
+
+```sh
+pnpm i -g pm2
+```
+
+You must initialize PM2 to run as a service:
+
+```sh
+pm2 startup
+```
