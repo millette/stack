@@ -1,9 +1,24 @@
 ---
+// astro
+import { getCollection, getEntry } from 'astro:content'
+
 // self
 import Hello from "!solid/hello.tsx"
 import Layout from "!layouts/layout.astro"
 import { title } from "!root/consts.js"
+
+const allBlogPosts = await getCollection('stack')
+console.log(allBlogPosts)
+
+const graceHopperProfile = await getEntry('stack', 'hop')
+
+console.log(graceHopperProfile)
+
+
+const { Content, headings } = await graceHopperProfile.render()
+
 ---
 <Layout title={title}>
 	<Hello name="Bob" />
+	<Content />
 </Layout>

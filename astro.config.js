@@ -6,12 +6,10 @@ import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
 import devtoolBreakpoints from "astro-devtool-breakpoints"
 
+import mdx from '@astrojs/mdx';
+
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    devtoolBreakpoints(),
-    solid({
-      include: ['**/solid/*'],
-    }),
-  ],
+  integrations: [tailwind(), devtoolBreakpoints(), solid({
+    include: ['**/solid/*'],
+  }), mdx()],
 })
