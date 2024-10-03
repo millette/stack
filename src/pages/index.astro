@@ -1,6 +1,6 @@
 ---
 // astro
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection, getEntry, render } from 'astro:content'
 
 // self
 import Hello from "!solid/hello.tsx"
@@ -8,17 +8,21 @@ import Layout from "!layouts/layout.astro"
 import { title } from "!root/consts.js"
 
 const allBlogPosts = await getCollection('stack')
-console.log(allBlogPosts)
+console.log("allBlogPosts", allBlogPosts)
 
-const graceHopperProfile = await getEntry('stack', 'hop')
+// const graceHopperProfile = await getEntry('stack', 'hop')
 
-console.log(graceHopperProfile)
+// console.log(graceHopperProfile)
 
-
-const { Content, headings } = await graceHopperProfile.render()
-
+// const { Content } = await render(graceHopperProfile)
+// console.log(JSON.stringify(headings, null, 2))
+// <Content />
 ---
 <Layout title={title}>
 	<Hello name="Bob" />
-	<Content />
+	<ol>
+		{allBlogPosts.map((post: any, i: number) => {
+			return <li>{i} {post.id} {post.data.title}</li>
+		})}
+	</ol>
 </Layout>

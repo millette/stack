@@ -1,8 +1,12 @@
 // astro
 import { defineCollection, z } from 'astro:content'
+import { glob } from 'astro/loaders'
 
 const stack = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*\.mdx',
+    base: './src/data/stack'
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string(),

@@ -9,6 +9,7 @@ import devtoolBreakpoints from "astro-devtool-breakpoints"
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
+  experimental: { contentLayer: true },
   integrations: [tailwind(), devtoolBreakpoints(), solid({
     include: ['**/solid/*'],
   }), mdx()],
