@@ -8,9 +8,10 @@ To install the latest pnpm and the node LTS run the following in your terminal:
 ```sh
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 bash # or restart the terminal to load new $PATH
-pnpm env use --global lts
+pnpm env use --global latest # install node (latest)
+pnpm env use --global lts # install node (and switch to Long Term Support)
 pnpm --version # should output something like 9.12.0
-node --version # should output something like v20.17.0
+node --version # should output something like v22.11.0
 which pnpm # should output something like ~/.local/share/pnpm/pnpm
 which node # should output something like ~/.local/share/pnpm/node
 ```
